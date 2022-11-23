@@ -1,0 +1,20 @@
+version: '3'
+services:
+  fluentd:
+    build: ./fluentd
+    volumes:
+      - ./fluentd/conf/fluent.conf:/fluentd/etc/fluent.conf
+      - ${TARGET_FILE_PATH}:/var/log/target
+      - ${PWD}/metadata:/var/log/td-agent/
+      - ${PWD}/buffer:/fluentd/log/scribe-buffer
+    environment:
+      - HTTP_LOG_SERVER=${HTTP_LOG_SERVER}
+      - SOURCE_TAG=${SOURCE_TAG}
+      - POS_JSON_FILE=${POS_JSON_FILE}
+      - POS_ERR_FILE=${POS_ERR_FILE}
+    networks:
+      - fluentfile
+
+networks:
+  fluentfile:
+    driver: bridge

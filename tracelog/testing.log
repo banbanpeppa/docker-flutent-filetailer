@@ -1,0 +1,4 @@
+{"message":"pattern not matched: \"testing log1\"","hostname":"feb688cfa132"}
+testing.tracing log1
+{"worker":0,"message":"fluentd worker is now stopping worker=0","hostname":"9b7cd873b43c"}
+testing.tracing log2
